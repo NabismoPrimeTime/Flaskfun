@@ -18,15 +18,13 @@ def index():
         string1 = str(entry_list[0])
 
 
-        return render_template('winner.html', msg=formatted_for_web)
-    return render_template('index.html')
+
+        return render_template("winner.html", msg= formatted_for_web)
+    return render_template("index.html")
 
 """@app.route("/entry", methods=["POST", "GET"])
 def entry():
-    if request.method == "POST":
-        user = request.form["ent"]
-        print(user)
-        return render_template('base.html')
+   return render_template('winner.html', msg)
 """
 
 import tkinter as tk
