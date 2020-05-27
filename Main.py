@@ -130,9 +130,12 @@ def date_button():
         print('This would currently be worth ${:.2f}'.format(entry_list[(test_counter.count -1)].calculations()[1]))
         print('This would yield you {}% Return on Investment\n ROI = ${:.2f}'.format(entry_list[(test_counter.count - 1)].calc_roi()[0],
                                                       entry_list[(test_counter.count - 1)].calc_roi()[1]))
-        formated_for_web = 'If you invested ${:.2f} on {},\n that would buy you {} Bitcoin \nThis would currently be worth ${:.2f}'.format(entry_list[(test_counter.count - 1)].invest_amt, entry_list[(test_counter.count - 1)].date,
+        formated_for_web = 'If you invested ${:.2f} on {},\n that would buy you {} Bitcoin. \nThis would currently be worth ${:.2f}'.format(entry_list[(test_counter.count - 1)].invest_amt, entry_list[(test_counter.count - 1)].date,
         entry_list[(test_counter.count - 1)].calculations()[0],entry_list[(test_counter.count -1)].calculations()[1])
-        return formated_for_web
+        roi = ' This would yield you {}% Return on Investment\n ROI = ${:.2f}'.format(entry_list[(test_counter.count - 1)].calc_roi()[0],
+                                                      entry_list[(test_counter.count - 1)].calc_roi()[1])
+        combined = formated_for_web + roi
+        return combined
     else:
         print("Please enter a valid date")
         run_cycle()
