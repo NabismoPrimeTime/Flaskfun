@@ -14,12 +14,11 @@ def index():
         inpuninv = request.form["invamt"]
         date_input = user
         invest_amt = int(inpuninv)
-        formatted_for_web = date_button()
-        string1 = str(entry_list[0])
 
 
+        string1 = date_button()
 
-        return render_template("winner.html", msg= formatted_for_web)
+        return render_template("winner.html", msg= string1)
     return render_template("index.html")
 
 """@app.route("/entry", methods=["POST", "GET"])
