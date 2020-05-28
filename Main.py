@@ -14,13 +14,13 @@ def index():
         inpuninv = request.form["investment"]
         date_input = dater
         invest_amt = int(inpuninv)
-        print(date_input)
+
 
 
         string1 = date_button()
         print(string1)
 
-        return render_template("winner.html", msg= string1)
+        return render_template("index2.html", msg= string1)
     return render_template("index2.html")
 
 """@app.route("/entry", methods=["POST", "GET"])
@@ -102,22 +102,23 @@ def date_button():
     user_date = date_input
     months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     month_digits = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
-    month_seg = user_date[0:2]
+    month_seg = user_date[5:7]
 
-    date_seg = user_date[3:5]
-    year_seg = user_date[6:10]
+    date_seg = user_date[8:10]
+    year_seg = user_date[0:4]
+    print(user_date)
 
     if month_seg in month_digits:
         place_holder = month_digits.index(month_seg)
         month_code = months[place_holder]
         format_date = '{} {}, {}'.format(month_code, date_seg, year_seg)
+        print('format date is :{}'.format(format_date))
         test_counter.count += 1
         entry_num = 'Entry number {}'.format(test_counter.count)
         current = get_current_price()
         investment = invest_amt
-    else:
-        print("fail")
-    if format_date in dates:
+        print(dates)
+    #if format_date in dates:
         date_index = dates.index(format_date)
         matching_price = close_floats[date_index]
         entry_list.append(UserEntry(format_date, matching_price, entry_num, current, investment))
