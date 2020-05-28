@@ -10,23 +10,25 @@ invest_amt = 100
 def index():
     global date_input, invest_amt
     if request.method == "POST":
-        user = request.form["dater"]
-        inpuninv = request.form["invamt"]
-        date_input = user
+        dater = request.form["date"]
+        inpuninv = request.form["investment"]
+        date_input = dater
         invest_amt = int(inpuninv)
+        print(date_input)
 
 
         string1 = date_button()
+        print(string1)
 
         return render_template("winner.html", msg= string1)
-    return render_template("index.html")
+    return render_template("index2.html")
 
 """@app.route("/entry", methods=["POST", "GET"])
 def entry():
    return render_template('winner.html', msg)
 """
 
-import tkinter as tk
+
 import csv
 
 
@@ -83,10 +85,6 @@ def dca():
             dca_label.grid(row=5, column=1)
 
 
-# Button to calculate DCA
-dca_button = tk.Button(text="Calculate DCA Amount", command=dca)
-
-
 # Counter to calculate entry numbers
 class Counter:
     def __init__(self):
@@ -109,13 +107,16 @@ def date_button():
     date_seg = user_date[3:5]
     year_seg = user_date[6:10]
 
-    place_holder = month_digits.index(month_seg)
-    month_code = months[place_holder]
-    format_date = '{} {}, {}'.format(month_code, date_seg, year_seg)
-    test_counter.count += 1
-    entry_num = 'Entry number {}'.format(test_counter.count)
-    current = get_current_price()
-    investment = invest_amt
+    if month_seg in month_digits:
+        place_holder = month_digits.index(month_seg)
+        month_code = months[place_holder]
+        format_date = '{} {}, {}'.format(month_code, date_seg, year_seg)
+        test_counter.count += 1
+        entry_num = 'Entry number {}'.format(test_counter.count)
+        current = get_current_price()
+        investment = invest_amt
+    else:
+        print("fail")
     if format_date in dates:
         date_index = dates.index(format_date)
         matching_price = close_floats[date_index]
@@ -150,12 +151,19 @@ def format_date():
 
     date_seg = user_date[3:5]
     year_seg = user_date[6:10]
+    if month_seg in month_digits:
+        print('true')
+        place_holder = month_digits.index(month_seg)
+        month_code = months[place_holder]
+        format_date2 = '{} {}, {}'.format(month_code, date_seg, year_seg)
+    else:
+        print('Please enter valid date')
 
-    place_holder = month_digits.index(month_seg)
+
+    """"" place_holder = month_digits.index(month_seg)
     month_code = months[place_holder]
-    format_date2 = '{} {}, {}'.format(month_code, date_seg, year_seg)
-    return format_date2
-
+    format_date2 = '{} {}, {}'.format(month_code, date_seg, year_seg
+    return format_date2"""""
 
 # Function to export entries as csv
 def exportcsv():
