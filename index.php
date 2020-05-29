@@ -49,14 +49,12 @@
 	if ( isset ( $_POST['submit'] ) ) {
 		//Get Amount of investment from Textfield
 		$invest_amt = $_REQUEST['investment'];
-		//echo '<br>Invest_amt = $' . $invest_amt . '<br>';
 		//Get Date invested from Textfield and convert it to alphabetical for use with scraper
 		$timestamp = strtotime($_POST['date']); //Get UNIX Timestamp to be parsed to day/month/year
 		$day=date('d',$timestamp); //Get Numeric Day
 		$month=date('M',$timestamp); //Get Alphabetic Month
 		$year=date('Y',$timestamp); //Get Numeric Year
 		$searchDate=$month . ' ' . $day . ', ' . $year; //Date for scraping on coinmarketcap.com	
-		//echo 'Search date = ' . $searchDate . '<br>';
 		//Link to scraper library
 		include('simple_html_dom.php');
 		$html =	file_get_html('https://coinmarketcap.com/currencies/bitcoin/historical-data/?start=20130501&end=20200528');
