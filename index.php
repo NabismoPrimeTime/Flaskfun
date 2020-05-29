@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" type="text/css" href="mobile.css" media="(max-width: 850px)">
+	<meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1.0, minimum-scale=0.5">
 	<title>GetCoined | ROI Calculator</title>
 	<link rel="icon" href="media/icofile.ico" type="image/x-icon"/>
 	<link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
@@ -12,9 +14,9 @@
 <div id="global_page">
 <div id="global_header">
 	<div id="banner_layout">
-	<a href="index.html"><img id="banner_img" src="media/banner.png" alt="GetCoined banner"></a>
+	<a href="https://www.getcoined.io/"><img id="banner_img" src="media/banner.png" alt="GetCoined banner"></a>
 	<nav id="banner_nav">
-	<a id="ROI_Calc" href="index.html">ROI Calculator</a>
+	<a id="ROI_Calc" href="/">ROI Calculator</a>
 	<a href="https://www.getcoined.io/">Home</a>
 	</nav>
 	</div> <!--banner_layout-->
