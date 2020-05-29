@@ -71,24 +71,20 @@
 		$line = str_replace($searchDate, "", $prefilter); //Remove Date
 
 		$length = strlen($line); //More String manipulation adding spaces after 2 decimals
-		$result = '';
-		$k=0;
-		while ($k<$length)
-		{
-			if ($line[$k] == '.')
-			{
+		$result = ''; //String to store result of String manipulation
+		$k=0; //Variable to iterate through loop
+		while ($k<$length){
+			if ($line[$k] == '.'){
 				$result .= $line[$k];
 				$result .= $line[$k+1];
 				$result .= $line[$k+2];
 				$result .= ' ';
 				$k += 3;
 			}
-			else if ($line[$k] == ' ')
-			{
+			else if ($line[$k] == ' '){
 				$k++;
 			}
-			else
-			{
+			else{
 				$result .= $line[$k];
 				$k++;
 			}
