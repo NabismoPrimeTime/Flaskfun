@@ -43,7 +43,7 @@
 		</div> <!--date_form-->
 		<div id="invest_form">
 		<label for="investment">Amount of investestment</label>
-		<span id="currencyinput">$ <input id="invest_field" type="number" name="investment" min="0" required></span>
+		<span id="currencyinput">$ <input id="invest_field" type="number" name="investment" min="1" required></span>
 		<input type="submit" name="submit" value="Submit">
 		</div> <!--invest_form-->
 	</form><br>
