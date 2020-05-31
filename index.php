@@ -44,16 +44,16 @@
 		<div id="invest_form">
 		<label for="investment">Amount of investestment</label>
 		<span id="currencyinput">$ <input id="invest_field" type="number" name="investment" min="0" required></span>
-		<input type="submit" name="submit" value="Submit" onclick="calcROI();">
+		<input type="submit" name="submit" value="Submit">
 		</div> <!--invest_form-->
 	</form><br>
 	<?php
 	//Check if the form is submitted
 	if ( isset ( $_POST['submit'] ) ) {
 		//Get Amount of investment from Textfield
-		$invest_amt = $_REQUEST['investment'];
-		//Get Date invested from Textfield and convert it to alphabetical for use with scraper
-		$timestamp = strtotime($_POST['date']); //Get UNIX Timestamp to be parsed to day/month/year
+		$invest_amt = test_input($_REQUEST['investment']);
+		//Get Date invested from Textfield and later convert for use with scraper
+		$timestamp = test_input(strtotime($_POST['date'])); //Get UNIX Timestamp to be parsed to day/month/year
 		$day=date('d',$timestamp); //Get Numeric Day
 		$month=date('M',$timestamp); //Get Alphabetic Month
 		$year=date('Y',$timestamp); //Get Numeric Year
@@ -117,6 +117,13 @@
 		The price of BTC right now is $' . $current_price . '/BTC<br>
 		You bought ' . $bitcoin_amt . ' BTC for $' . $invest_amt . ' and it\'s now worth $' . number_format($current_worth, 2, '.', '') . '<br>
 		You have seen a ' . number_format($percent_change, 2, '.', '') . '% difference. Your ROI is $' . number_format($ROI_final, 2, '.', '');
+	}
+	//Function to clean input and return data
+	function test_input($data){
+	  $data = trim($data);
+	  $data = stripslashes($data);
+	  $data = htmlspecialchars($data);
+	  return $data;
 	}
 	?>
 	</div> <!--form_container-->
