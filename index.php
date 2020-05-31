@@ -30,19 +30,20 @@
 	<div id="instructions_container">
 	<p id="ROI_banner">What is the ROI Calculator?</p>
 	<p id="instructions">The GetCoined Return on Investment (ROI) Calculator is a performance measure used to evaluate the 
-	efficiency of an investment of bitcoin by calculating the amount of money bitcoin would currently be worth based on your investment
+	efficiency of an investment in Bitcoin by calculating the amount of money Bitcoin would currently be worth based on your investment
 	on a specific date.
 	</p>
 	</div> <!--instructions_container-->
 	<div id="form_container">
-	<form action="index.php" method="post"> 
+	<form action="/" method="post"> 
 		<div id="date_form">
 		<label for="date">Date invested in Bitcoin</label>
-		<input id="date_field" name="date" type="date" value="2020-04-01">
+		<input id="date_field" name="date" type="date" min="2013-05-01" max="<?php echo date('Y-m-d', time() - 60 * 60 * 24); ?>" 
+		value="<?php echo date('Y-m-d', time() - 60 * 60 * 24); ?>" required>
 		</div> <!--date_form-->
 		<div id="invest_form">
 		<label for="investment">Amount of investestment</label>
-		<span id="currencyinput">$ <input id="invest_field" type="number" name="investment"></span>
+		<span id="currencyinput">$ <input id="invest_field" type="number" name="investment" min="0" required></span>
 		<input type="submit" name="submit" value="Submit" onclick="calcROI();">
 		</div> <!--invest_form-->
 	</form><br>
@@ -60,7 +61,7 @@
 		//Link to scraper library
 		include('simple_html_dom.php');
 		$html = new simple_html_dom(); //Create new HTML DOM Object
-		$html->load_file('https://coinmarketcap.com/currencies/bitcoin/historical-data/?start=20130501&end=20200528');
+		$html->load_file('https://coinmarketcap.com/currencies/bitcoin/historical-data/?start=20130501');
 		$table = $html->find('tr[class="cmc-table-row"]'); //Create table from coinmarketcap.com
 		for ( $i = 0; $i < sizeof($table); $i++ ){ //Search through array for row with correct date
 			if (strpos($table[$i], $searchDate) !== false)	{
