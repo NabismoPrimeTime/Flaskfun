@@ -42,7 +42,7 @@
 		value="<?php echo date('Y-m-d', time() - 60 * 60 * 24); ?>" required>
 		</div> <!--date_form-->
 		<div id="invest_form">
-		<label for="investment">Amount of investestment</label>
+		<label for="investment">Amount of investment</label>
 		<span id="currencyinput">$ <input id="invest_field" type="number" name="investment" min="1" required></span>
 		<input type="submit" name="submit" value="Submit">
 		</div> <!--invest_form-->
