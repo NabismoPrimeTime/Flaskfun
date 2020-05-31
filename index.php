@@ -59,7 +59,8 @@
 		$searchDate=$month . ' ' . $day . ', ' . $year; //Date for scraping on coinmarketcap.com	
 		//Link to scraper library
 		include('simple_html_dom.php');
-		$html =	file_get_html('https://coinmarketcap.com/currencies/bitcoin/historical-data/?start=20130501&end=20200528');
+		$html = new simple_html_dom(); //Create new HTML DOM Object
+		$html->load_file('https://coinmarketcap.com/currencies/bitcoin/historical-data/?start=20130501&end=20200528');
 		$table = $html->find('tr[class="cmc-table-row"]'); //Create table from coinmarketcap.com
 		for ( $i = 0; $i < sizeof($table); $i++ ){ //Search through array for row with correct date
 			if (strpos($table[$i], $searchDate) !== false)	{
