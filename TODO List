@@ -1,0 +1,9 @@
+TODO LIST
+
+- Adjust verbage of output text
+- Build database to scrape historical price data into
+- Adjust PHP code to perform calculations using data from database
+- Explore options for formatting the result data into HTML table
+- Create mock up for results data output table
+- Include meta tags for search engines
+- Include link to Github repo on page.
